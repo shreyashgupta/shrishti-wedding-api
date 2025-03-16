@@ -59,7 +59,14 @@ def get_folders():
 @app.post("/select/{image_id}")
 def toggle_selection(image_id: int):
     client = get_client()
-    query = f"UPDATE images SET is_selected = NOT is_selected WHERE id = {image_id};"
+    query = f"UPDATE images SET is_selected = true WHERE id = {image_id};"
+    execute_query(client, query)
+    return {"message": "Updated successfully"}
+
+@app.post("/deselect/{image_id}")
+def toggle_selection(image_id: int):
+    client = get_client()
+    query = f"UPDATE images SET is_selected = false WHERE id = {image_id};"
     execute_query(client, query)
     return {"message": "Updated successfully"}
 
