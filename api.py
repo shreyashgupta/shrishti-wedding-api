@@ -1,5 +1,4 @@
-from fastapi import FastAPI, Query
-import sqlite3
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from cloudflare import Cloudflare
 import os
