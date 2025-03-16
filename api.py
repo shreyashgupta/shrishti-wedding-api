@@ -17,7 +17,7 @@ app.add_middleware(
 
 API_TOKEN = os.getenv("API_TOKEN")
 DB_ID = os.getenv("DB_ID")
-ACCOUND_ID = os.getenv("ACCOUND_ID")
+ACCOUNT_ID = os.getenv("ACCOUNT_ID")
 
 def get_client():
     client = Cloudflare(
@@ -30,7 +30,7 @@ def execute_query(client, query):
   
     page = client.d1.database.query(
     database_id=DB_ID,
-    account_id=ACCOUND_ID,
+    account_id=ACCOUNT_ID,
     sql=query,
     )  
     return page[0]
