@@ -96,7 +96,9 @@ def toggle_selection(image_id: int, user_type: str = ""):
 
 
 @app.get("/selected_count")
-def get_total_selected_count(user_type: str = ""):
+def get_total_selected_count(user_type: str = "", folder: str = None):
     query = "SELECT COUNT(*) as count FROM images WHERE is_selected = 1;"
+    if folder:
+        query += f" AND folder = '{folder}'"
     result = execute_query(get_auth(user_type), query)
     return {"total_selected": result.results[0]["count"]}
