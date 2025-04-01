@@ -58,7 +58,7 @@ def get_images(
         query += f" AND folder = '{folder}'"
     if selected:
         query += f" AND is_selected = {int(selected)}"
-    else:
+    if limit:
         query += f" LIMIT {limit} OFFSET {offset};"
 
     result = execute_query(get_auth(user_type), query)
